@@ -3,25 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UCI - Hospital Royo Villanova</title>
+    <title>UCI Médicos - Hospital Royo Villanova</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #c62828;
-            --primary-light: #e53935;
-            --primary-dark: #8e0000;
-            --accent: #d32f2f;
+            --primary: #1565c0;
+            --primary-light: #1e88e5;
+            --primary-dark: #0d47a1;
+            --accent: #1976d2;
             --surface: #ffffff;
-            --surface-hover: #fff5f5;
+            --surface-hover: #f0f7ff;
             --text: #1a1a1a;
             --text-secondary: #666666;
             --border: #e0e0e0;
             --bg: #ffffff;
             --shadow: rgba(0, 0, 0, 0.06);
-            --shadow-hover: rgba(198, 40, 40, 0.15);
+            --shadow-hover: rgba(21, 101, 192, 0.15);
             --radius: 16px;
+            --icon-bg: #eff6ff;
+            --icon-border: #bfdbfe;
         }
 
         * {
@@ -70,6 +72,12 @@
             line-height: 1.3;
         }
 
+        .header p {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-top: 8px;
+        }
+
         @media (min-width: 640px) {
             .header h1 {
                 font-size: 2.2rem;
@@ -114,6 +122,8 @@
         .link-card:nth-child(5) { animation-delay: 0.25s; }
         .link-card:nth-child(6) { animation-delay: 0.3s; }
         .link-card:nth-child(7) { animation-delay: 0.35s; }
+        .link-card:nth-child(8) { animation-delay: 0.4s; }
+        .link-card:nth-child(9) { animation-delay: 0.45s; }
 
         .link-card::after {
             content: '';
@@ -157,8 +167,8 @@
             align-items: center;
             justify-content: center;
             font-size: 1.6rem;
-            background: #fef2f2;
-            border: 1px solid #fecaca;
+            background: var(--icon-bg);
+            border: 1px solid var(--icon-border);
             transition: all 0.25s ease;
         }
 
@@ -258,89 +268,90 @@
 <body>
     <div class="page-wrapper">
         <header class="header">
-            <img src="logo.png" alt="HUCI del Royo" class="header-logo">
-            <h1>ucIApp<br>Hospital Universitario Royo Villanova</h1>
+            <img src="logo.png" alt="UCI Royo Villanova" class="header-logo">
+            <h1>ucIApp · Médicos<br>Hospital Universitario Royo Villanova</h1>
+            <p>Portal de recursos para el personal médico de UCI</p>
         </header>
 
         <div class="links-grid">
 
-                    <a href="https://notebooklm.google.com/notebook/e4e697ae-792a-4ef9-b6cd-8062aabb5caf" class="link-card" target="_blank" rel="noopener">
-                <div class="card-icon">👩‍⚕️</div>
+            <a href="#" class="link-card" target="_blank" rel="noopener">
+                <div class="card-icon">📋</div>
                 <div class="card-content">
-                    <div class="card-title">Ayuda Enfermería</div>
-                    <p class="card-description">Asistente para enfermería, dudas, qué necesito para ...etc</p>
+                    <div class="card-title">Protocolos UCI</div>
+                    <p class="card-description">Protocolos clínicos y guías de actuación de la unidad</p>
                 </div>
                 <span class="card-arrow">→</span>
             </a>
 
-                  <a href="https://notebooklm.google.com/notebook/8f89c252-cfa6-49c9-82cb-7480fbe08eb0?authuser=1" class="link-card" target="_blank" rel="noopener">
-                <div class="card-icon">👩‍⚕️</div>
-                <div class="card-content">
-                    <div class="card-title">Ayuda TCAE</div>
-                    <p class="card-description">Asistente al TCAE, Checklists, Dudas, etc</p>
-                </div>
-                <span class="card-arrow">→</span>
-            </a>
-            
-            <a href="https://notebooklm.google.com/notebook/0ffdece0-3139-4fc7-b0fa-dd63517c592d?_gl=1*ewqnbn*_ga*NjgxNTA3NTI2LjE3MzAzNjU2ODQ.*_ga_W0LDH41ZCB*MTczMDM2NTY4My4xLjEuMTczMDM2NTY4My42MC4wLjA.&original_referer=https%3A%2F%2Fnotebooklm.google%23&pli=1&authuser=1&pageId=none" class="link-card" target="_blank" rel="noopener">
-                <div class="card-icon">📦</div>
-                <div class="card-content">
-                    <div class="card-title">Almacén</div>
-                    <p class="card-description">Consulta la ubicación del material</p>
-                </div>
-                <span class="card-arrow">→</span>
-            </a>
-
-                <a href="https://notebooklm.google.com/notebook/7d31a335-4489-4a30-8f29-d44c9220d73f" class="link-card" target="_blank" rel="noopener">
-                <div class="card-icon">🖥️</div>
-                <div class="card-content">
-                    <div class="card-title">Tengo Problemas con...</div>
-                    <p class="card-description">Ayuda para resolver problemas con ordenadores, no vuelcan, internet, cualquier cosa, etc</p>
-                </div>
-                <span class="card-arrow">→</span>
-            </a>
-
-            <a href="https://notebooklm.google.com/notebook/b5578dde-5545-4e7f-8ccd-97a086b7f55a" class="link-card" target="_blank" rel="noopener">
-                <div class="card-icon">🖥️</div>
-                <div class="card-content">
-                    <div class="card-title">Guía ICCA</div>
-                    <p class="card-description">Dudas sobre el ICCA y los aparatos, monitores conectados a él</p>
-                </div>
-                <span class="card-arrow">→</span>
-            </a>
-            
-            <a href="https://notebooklm.google.com/notebook/47564225-a03b-4f36-add1-32e70a32665c?authuser=1" class="link-card" target="_blank" rel="noopener">
-                <div class="card-icon">🧹</div>
-                <div class="card-content">
-                    <div class="card-title">Limpieza Aparatos</div>
-                    <p class="card-description">Protocolos de limpieza y desinfección de equipos</p>
-                </div>
-                <span class="card-arrow">→</span>
-            </a>
-
-                  <a href="https://notebooklm.google.com/notebook/d988968f-66ef-4b17-a0ce-21dc0d73d4ee" class="link-card" target="_blank" rel="noopener">
+            <a href="#" class="link-card" target="_blank" rel="noopener">
                 <div class="card-icon">💊</div>
                 <div class="card-content">
-                    <div class="card-title">Guía para perfusiones del Royo</div>
-                    <p class="card-description">Consulta como se preparan las perfusiones intravenosas, dosis, incompatibilidades, etc</p>
+                    <div class="card-title">Guía Farmacológica</div>
+                    <p class="card-description">Dosis, perfusiones, interacciones y ajustes en UCI</p>
                 </div>
                 <span class="card-arrow">→</span>
             </a>
 
-             <a href="https://notebooklm.google.com/notebook/5d01fd9b-fc64-4487-a8f3-a4b07ce03383" class="link-card" target="_blank" rel="noopener">
-                <div class="card-icon">🖥️</div>
+            <a href="#" class="link-card" target="_blank" rel="noopener">
+                <div class="card-icon">🫁</div>
                 <div class="card-content">
-                    <div class="card-title">Proyectos Zero</div>
-                    <p class="card-description">Dudas relativas a los proyectos Zero</p>
+                    <div class="card-title">Ventilación Mecánica</div>
+                    <p class="card-description">Modos ventilatorios, parámetros y weaning</p>
                 </div>
                 <span class="card-arrow">→</span>
             </a>
 
-            <a href="https://notebooklm.google.com/notebook/7a109fde-90c4-48b9-8c6f-538a3641db60" class="link-card" target="_blank" rel="noopener">
+            <a href="#" class="link-card" target="_blank" rel="noopener">
+                <div class="card-icon">🩺</div>
+                <div class="card-content">
+                    <div class="card-title">Sedoanalgesia</div>
+                    <p class="card-description">Escalas, protocolos de sedación y analgesia</p>
+                </div>
+                <span class="card-arrow">→</span>
+            </a>
+
+            <a href="#" class="link-card" target="_blank" rel="noopener">
+                <div class="card-icon">🧪</div>
+                <div class="card-content">
+                    <div class="card-title">Analíticas y Pruebas</div>
+                    <p class="card-description">Solicitud de pruebas, valores de referencia, interpretación</p>
+                </div>
+                <span class="card-arrow">→</span>
+            </a>
+
+            <a href="#" class="link-card" target="_blank" rel="noopener">
+                <div class="card-icon">🦠</div>
+                <div class="card-content">
+                    <div class="card-title">Antibioterapia</div>
+                    <p class="card-description">Guía de antibióticos, antifúngicos y antivirales en UCI</p>
+                </div>
+                <span class="card-arrow">→</span>
+            </a>
+
+            <a href="#" class="link-card" target="_blank" rel="noopener">
+                <div class="card-icon">❤️‍🩹</div>
+                <div class="card-content">
+                    <div class="card-title">Hemodinámica</div>
+                    <p class="card-description">Monitorización hemodinámica, vasopresores, fluidoterapia</p>
+                </div>
+                <span class="card-arrow">→</span>
+            </a>
+
+            <a href="#" class="link-card" target="_blank" rel="noopener">
                 <div class="card-icon">📞</div>
                 <div class="card-content">
                     <div class="card-title">Guía Telefónica</div>
                     <p class="card-description">Directorio telefónico del Hospital Royo Villanova</p>
+                </div>
+                <span class="card-arrow">→</span>
+            </a>
+
+            <a href="#" class="link-card" target="_blank" rel="noopener">
+                <div class="card-icon">🖥️</div>
+                <div class="card-content">
+                    <div class="card-title">Guía ICCA</div>
+                    <p class="card-description">Dudas sobre el ICCA, registro clínico y configuración</p>
                 </div>
                 <span class="card-arrow">→</span>
             </a>
