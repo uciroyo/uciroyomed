@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UCI - Hospital Royo Villanova</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #c62828;
+            --primary-light: #e53935;
+            --primary-dark: #8e0000;
+            --accent: #d32f2f;
+            --surface: #ffffff;
+            --surface-hover: #fff5f5;
+            --text: #1a1a1a;
+            --text-secondary: #666666;
+            --border: #e0e0e0;
+            --bg: #ffffff;
+            --shadow: rgba(0, 0, 0, 0.06);
+            --shadow-hover: rgba(198, 40, 40, 0.15);
+            --radius: 16px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            min-height: 100vh;
+            color: var(--text);
+        }
+
+        .page-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 32px 20px 60px;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding: 24px 16px;
+            animation: fadeDown 0.6s ease-out;
+        }
+
+        .header-logo {
+            width: 140px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        @media (min-width: 640px) {
+            .header-logo {
+                width: 180px;
+            }
+        }
+
+        .header h1 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            line-height: 1.3;
+        }
+
+        @media (min-width: 640px) {
+            .header h1 {
+                font-size: 2.2rem;
+            }
+        }
+
+        /* Links Grid */
+        .links-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 14px;
+        }
+
+        @media (min-width: 640px) {
+            .links-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+            }
+        }
+
+        .link-card {
+            background: var(--surface);
+            border: 1.5px solid var(--border);
+            border-radius: var(--radius);
+            padding: 20px;
+            text-decoration: none;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 1px 3px var(--shadow);
+            position: relative;
+            overflow: hidden;
+            animation: fadeUp 0.5s ease-out backwards;
+        }
+
+        .link-card:nth-child(1) { animation-delay: 0.05s; }
+        .link-card:nth-child(2) { animation-delay: 0.1s; }
+        .link-card:nth-child(3) { animation-delay: 0.15s; }
+        .link-card:nth-child(4) { animation-delay: 0.2s; }
+        .link-card:nth-child(5) { animation-delay: 0.25s; }
+        .link-card:nth-child(6) { animation-delay: 0.3s; }
+        .link-card:nth-child(7) { animation-delay: 0.35s; }
+
+        .link-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--primary);
+            opacity: 0;
+            transition: opacity 0.25s ease;
+        }
+
+        .link-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px var(--shadow-hover);
+            border-color: var(--primary-light);
+            background: var(--surface-hover);
+        }
+
+        .link-card:hover::after {
+            opacity: 1;
+        }
+
+        .link-card:active {
+            transform: translateY(0);
+        }
+
+        .link-card.disabled {
+            opacity: 0.5;
+            cursor: default;
+            pointer-events: none;
+        }
+
+        .card-icon {
+            flex-shrink: 0;
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+            transition: all 0.25s ease;
+        }
+
+        .link-card:hover .card-icon {
+            background: var(--primary);
+            border-color: transparent;
+            transform: scale(1.05);
+        }
+
+        .card-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 3px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        @media (min-width: 640px) {
+            .card-title {
+                font-size: 1.15rem;
+            }
+        }
+
+        .card-badge {
+            font-size: 0.6rem;
+            font-weight: 600;
+            padding: 2px 7px;
+            border-radius: 100px;
+            background: #f3f4f6;
+            color: #9ca3af;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            font-family: 'JetBrains Mono', monospace;
+            white-space: nowrap;
+        }
+
+        .card-description {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            line-height: 1.4;
+        }
+
+        @media (min-width: 640px) {
+            .card-description {
+                font-size: 0.9rem;
+            }
+        }
+
+        .card-arrow {
+            flex-shrink: 0;
+            color: #d4d4d4;
+            font-size: 1.2rem;
+            transition: all 0.25s ease;
+        }
+
+        .link-card:hover .card-arrow {
+            color: var(--primary);
+            transform: translateX(3px);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 48px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+            animation: fadeUp 0.5s ease-out 0.5s backwards;
+        }
+
+        .footer p {
+            font-size: 0.78rem;
+            color: var(--text-secondary);
+            font-family: 'JetBrains Mono', monospace;
+            letter-spacing: 0.03em;
+        }
+
+        /* Animations */
+        @keyframes fadeDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-wrapper">
+        <header class="header">
+            <img src="logo.png" alt="HUCI del Royo" class="header-logo">
+            <h1>ucIApp<br>Hospital Universitario Royo Villanova</h1>
+        </header>
+
+        <div class="links-grid">
+
+                    <a href="https://notebooklm.google.com/notebook/e4e697ae-792a-4ef9-b6cd-8062aabb5caf" class="link-card" target="_blank" rel="noopener">
+                <div class="card-icon">👩‍⚕️</div>
+                <div class="card-content">
+                    <div class="card-title">Ayuda Enfermería</div>
+                    <p class="card-description">Asistente para enfermería, dudas, qué necesito para ...etc</p>
+                </div>
+                <span class="card-arrow">→</span>
+            </a>
+
+                  <a href="https://notebooklm.google.com/notebook/8f89c252-cfa6-49c9-82cb-7480fbe08eb0?authuser=1" class="link-card" target="_blank" rel="noopener">
+                <div class="card-icon">👩‍⚕️</div>
+                <div class="card-content">
+                    <div class="card-title">Ayuda TCAE</div>
+                    <p class="card-description">Asistente al TCAE, Checklists, Dudas, etc</p>
+                </div>
+                <span class="card-arrow">→</span>
+            </a>
+            
+            <a href="https://notebooklm.google.com/notebook/0ffdece0-3139-4fc7-b0fa-dd63517c592d?_gl=1*ewqnbn*_ga*NjgxNTA3NTI2LjE3MzAzNjU2ODQ.*_ga_W0LDH41ZCB*MTczMDM2NTY4My4xLjEuMTczMDM2NTY4My42MC4wLjA.&original_referer=https%3A%2F%2Fnotebooklm.google%23&pli=1&authuser=1&pageId=none" class="link-card" target="_blank" rel="noopener">
+                <div class="card-icon">📦</div>
+                <div class="card-content">
+                    <div class="card-title">Almacén</div>
+                    <p class="card-description">Consulta la ubicación del material</p>
+                </div>
+                <span class="card-arrow">→</span>
+            </a>
+
+                <a href="https://notebooklm.google.com/notebook/7d31a335-4489-4a30-8f29-d44c9220d73f" class="link-card" target="_blank" rel="noopener">
+                <div class="card-icon">🖥️</div>
+                <div class="card-content">
+                    <div class="card-title">Tengo Problemas con...</div>
+                    <p class="card-description">Ayuda para resolver problemas con ordenadores, no vuelcan, internet, cualquier cosa, etc</p>
+                </div>
+                <span class="card-arrow">→</span>
+            </a>
+
+            <a href="https://notebooklm.google.com/notebook/b5578dde-5545-4e7f-8ccd-97a086b7f55a" class="link-card" target="_blank" rel="noopener">
+                <div class="card-icon">🖥️</div>
+                <div class="card-content">
+                    <div class="card-title">Guía ICCA</div>
+                    <p class="card-description">Dudas sobre el ICCA y los aparatos, monitores conectados a él</p>
+                </div>
+                <span class="card-arrow">→</span>
+            </a>
+            
+            <a href="https://notebooklm.google.com/notebook/47564225-a03b-4f36-add1-32e70a32665c?authuser=1" class="link-card" target="_blank" rel="noopener">
+                <div class="card-icon">🧹</div>
+                <div class="card-content">
+                    <div class="card-title">Limpieza Aparatos</div>
+                    <p class="card-description">Protocolos de limpieza y desinfección de equipos</p>
+                </div>
+                <span class="card-arrow">→</span>
+            </a>
+
+                  <a href="https://notebooklm.google.com/notebook/d988968f-66ef-4b17-a0ce-21dc0d73d4ee" class="link-card" target="_blank" rel="noopener">
+                <div class="card-icon">💊</div>
+                <div class="card-content">
+                    <div class="card-title">Guía para perfusiones del Royo</div>
+                    <p class="card-description">Consulta como se preparan las perfusiones intravenosas, dosis, incompatibilidades, etc</p>
+                </div>
+                <span class="card-arrow">→</span>
+            </a>
+
+             <a href="https://notebooklm.google.com/notebook/5d01fd9b-fc64-4487-a8f3-a4b07ce03383" class="link-card" target="_blank" rel="noopener">
+                <div class="card-icon">🖥️</div>
+                <div class="card-content">
+                    <div class="card-title">Proyectos Zero</div>
+                    <p class="card-description">Dudas relativas a los proyectos Zero</p>
+                </div>
+                <span class="card-arrow">→</span>
+            </a>
+
+            <a href="https://notebooklm.google.com/notebook/7a109fde-90c4-48b9-8c6f-538a3641db60" class="link-card" target="_blank" rel="noopener">
+                <div class="card-icon">📞</div>
+                <div class="card-content">
+                    <div class="card-title">Guía Telefónica</div>
+                    <p class="card-description">Directorio telefónico del Hospital Royo Villanova</p>
+                </div>
+                <span class="card-arrow">→</span>
+            </a>
+
+        </div>
+
+        <footer class="footer">
+            <p>En caso de advertir errores en las contestaciones y/o falta de información, notificar</p>
+            <p>UCI · Hospital Universitario Royo Villanova · Servicio Aragonés de Salud</p>
+        </footer>
+    </div>
+</body>
+</html>
