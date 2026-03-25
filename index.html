@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ucIAppmed</title>
+<title>ucIAppmed · UCI Royo Villanova</title>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -27,7 +27,7 @@
 }
 
 html, body {
-  height: 100%;
+  min-height: 100%;
   font-family: 'Outfit', sans-serif;
   background: var(--snow);
   color: var(--ink);
@@ -35,36 +35,38 @@ html, body {
 }
 
 .wrap {
-  max-width: 420px;
+  max-width: 960px;
   margin: 0 auto;
-  padding: 16px 14px 14px;
+  padding: 24px 20px 32px;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
 
-/* HEADER */
+/* ── HEADER ── */
 .header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 14px;
+  margin-bottom: 24px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--line);
   opacity: 0;
   animation: fadeDown 0.5s ease 0.05s forwards;
 }
 
 .header-eyebrow {
   font-family: 'DM Mono', monospace;
-  font-size: 8px;
+  font-size: 9px;
   letter-spacing: 0.16em;
   color: var(--steel);
   text-transform: uppercase;
-  margin-bottom: 2px;
+  margin-bottom: 4px;
 }
 
 .header h1 {
   font-family: 'Instrument Serif', serif;
-  font-size: 1.5rem;
+  font-size: clamp(1.6rem, 4vw, 2.6rem);
   font-weight: 400;
   line-height: 1;
   color: var(--ink);
@@ -73,29 +75,37 @@ html, body {
 
 .header h1 em { font-style: italic; color: var(--accent); }
 
+.header-sub {
+  font-size: clamp(11px, 1.5vw, 13px);
+  color: var(--ink3);
+  font-weight: 300;
+  margin-top: 6px;
+}
+
 .header-badge {
   font-family: 'DM Mono', monospace;
-  font-size: 7.5px;
+  font-size: 8px;
   letter-spacing: 0.1em;
   background: var(--ink);
   color: var(--white);
-  padding: 5px 9px;
+  padding: 6px 11px;
   border-radius: 4px;
   text-transform: uppercase;
   white-space: nowrap;
+  align-self: flex-start;
 }
 
-/* SECTION LABEL */
+/* ── SECTION LABEL ── */
 .section-label {
   font-family: 'DM Mono', monospace;
-  font-size: 8px;
+  font-size: 8.5px;
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--steel);
-  margin: 10px 0 7px;
+  margin: 20px 0 10px;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   opacity: 0;
   animation: fadeIn 0.4s ease 0.2s forwards;
 }
@@ -107,44 +117,58 @@ html, body {
   background: var(--line);
 }
 
-/* GRIDS */
+/* ── GRIDS ── */
 .grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 8px;
+}
+
+@media (min-width: 480px) {
+  .grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (min-width: 768px) {
+  .grid { grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
 }
 
 .grid-3 {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 8px;
 }
 
-/* CARD */
+@media (min-width: 480px) {
+  .grid-3 { grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+}
+
+/* ── CARD ── */
 .card {
   background: var(--white);
   border: 1px solid var(--line);
   border-radius: 10px;
-  padding: 11px 12px;
+  padding: 14px 16px;
   text-decoration: none;
   color: inherit;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   transition: border-color 0.18s, box-shadow 0.18s, transform 0.18s;
   opacity: 0;
   animation: slideUp 0.45s cubic-bezier(0.22,1,0.36,1) forwards;
   -webkit-tap-highlight-color: transparent;
 }
 
-.card:active {
-  transform: scale(0.97);
-  background: var(--snow);
+@media (min-width: 768px) {
+  .card { padding: 18px 20px; gap: 14px; }
 }
+
+.card:active { transform: scale(0.98); background: var(--snow); }
 
 .card:hover {
   border-color: var(--accent);
-  box-shadow: 0 2px 12px var(--accent-glow);
+  box-shadow: 0 3px 16px var(--accent-glow);
+  transform: translateY(-2px);
 }
 
 .card:hover .icon-wrap { background: var(--ink); border-color: var(--ink); }
@@ -152,9 +176,9 @@ html, body {
 
 .icon-wrap {
   flex-shrink: 0;
-  width: 34px;
-  height: 34px;
-  border-radius: 7px;
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
   border: 1px solid var(--line);
   background: var(--snow);
   display: flex;
@@ -163,9 +187,14 @@ html, body {
   transition: background 0.18s, border-color 0.18s;
 }
 
+@media (min-width: 768px) {
+  .icon-wrap { width: 44px; height: 44px; border-radius: 10px; }
+  .icon-wrap svg { width: 18px !important; height: 18px !important; }
+}
+
 .icon-wrap svg {
-  width: 15px;
-  height: 15px;
+  width: 16px;
+  height: 16px;
   stroke: var(--ink2);
   fill: none;
   stroke-width: 1.6;
@@ -177,7 +206,7 @@ html, body {
 .card-body { flex: 1; min-width: 0; }
 
 .card-title {
-  font-size: 11.5px;
+  font-size: 13px;
   font-weight: 600;
   color: var(--ink);
   line-height: 1.3;
@@ -187,13 +216,19 @@ html, body {
 }
 
 .card-desc {
-  font-size: 10px;
+  font-size: 11px;
   color: var(--ink3);
-  line-height: 1.3;
+  line-height: 1.4;
   font-weight: 300;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  margin-top: 2px;
+}
+
+@media (min-width: 768px) {
+  .card-title { font-size: 14.5px; }
+  .card-desc  { font-size: 12px; }
 }
 
 .tag {
@@ -209,21 +244,21 @@ html, body {
 }
 .tag-ai { background: #ede9fb; color: #5b3fa0; }
 
-/* Color accents */
-.c-red .icon-wrap { border-color: rgba(192,57,43,0.2); background: rgba(192,57,43,0.05); }
-.c-red .icon-wrap svg { stroke: var(--red); }
-.c-green .icon-wrap { border-color: rgba(26,122,74,0.2); background: rgba(26,122,74,0.05); }
-.c-green .icon-wrap svg { stroke: var(--green); }
-.c-amber .icon-wrap { border-color: rgba(184,114,10,0.2); background: rgba(184,114,10,0.05); }
-.c-amber .icon-wrap svg { stroke: var(--amber); }
-.c-violet .icon-wrap { border-color: rgba(91,63,160,0.2); background: rgba(91,63,160,0.05); }
+/* ── COLOR ACCENTS ── */
+.c-red    .icon-wrap { border-color: rgba(192,57,43,0.2);   background: rgba(192,57,43,0.05);  }
+.c-red    .icon-wrap svg { stroke: var(--red); }
+.c-green  .icon-wrap { border-color: rgba(26,122,74,0.2);   background: rgba(26,122,74,0.05);  }
+.c-green  .icon-wrap svg { stroke: var(--green); }
+.c-amber  .icon-wrap { border-color: rgba(184,114,10,0.2);  background: rgba(184,114,10,0.05); }
+.c-amber  .icon-wrap svg { stroke: var(--amber); }
+.c-violet .icon-wrap { border-color: rgba(91,63,160,0.2);   background: rgba(91,63,160,0.05);  }
 .c-violet .icon-wrap svg { stroke: var(--violet); }
-.c-teal .icon-wrap { border-color: rgba(15,110,110,0.2); background: rgba(15,110,110,0.05); }
-.c-teal .icon-wrap svg { stroke: var(--teal); }
-.c-blue .icon-wrap { border-color: rgba(26,95,168,0.2); background: rgba(26,95,168,0.05); }
-.c-blue .icon-wrap svg { stroke: var(--accent); }
+.c-teal   .icon-wrap { border-color: rgba(15,110,110,0.2);  background: rgba(15,110,110,0.05); }
+.c-teal   .icon-wrap svg { stroke: var(--teal); }
+.c-blue   .icon-wrap { border-color: rgba(26,95,168,0.2);   background: rgba(26,95,168,0.05);  }
+.c-blue   .icon-wrap svg { stroke: var(--accent); }
 
-/* Animation delays */
+/* ── ANIMATION DELAYS ── */
 .grid .card:nth-child(1) { animation-delay: 0.18s; }
 .grid .card:nth-child(2) { animation-delay: 0.24s; }
 .grid .card:nth-child(3) { animation-delay: 0.30s; }
@@ -237,35 +272,41 @@ html, body {
 .grid-3 .card:nth-child(2) { animation-delay: 0.60s; }
 .grid-3 .card:nth-child(3) { animation-delay: 0.66s; }
 
-/* FOOTER */
+/* ── FOOTER ── */
 .footer {
   margin-top: auto;
-  padding-top: 10px;
+  padding-top: 20px;
+  margin-top: 28px;
   border-top: 1px solid var(--line);
   opacity: 0;
   animation: fadeIn 0.5s ease 0.9s forwards;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
 .footer p {
-  font-size: 9px;
+  font-size: 9.5px;
   color: var(--mist);
   font-family: 'DM Mono', monospace;
   letter-spacing: 0.06em;
-  text-align: center;
   line-height: 1.8;
 }
 
+/* ── ANIMATIONS ── */
 @keyframes fadeDown {
   from { opacity: 0; transform: translateY(-10px); }
-  to { opacity: 1; transform: translateY(0); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 @keyframes slideUp {
   from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 @keyframes fadeIn {
   from { opacity: 0; }
-  to { opacity: 1; }
+  to   { opacity: 1; }
 }
 </style>
 </head>
@@ -274,8 +315,9 @@ html, body {
 
   <header class="header">
     <div class="header-left">
-      <div class="header-eyebrow">UCI · Royo Villanova</div>
+      <div class="header-eyebrow">UCI · Royo Villanova · SALUD Aragón</div>
       <h1>ucI<em>App</em>med</h1>
+      <p class="header-sub">Portal de recursos clínicos para el personal médico de la UCI</p>
     </div>
     <div class="header-badge">SALUD · Aragón</div>
   </header>
@@ -283,13 +325,14 @@ html, body {
   <div class="section-label">Protocolos clínicos</div>
 
   <div class="grid">
+
     <a href="https://gemini.google.com/gem/1uMF-KXeMRXWXunK1wDgA788pjBanZVrG?usp=sharing" class="card c-red" target="_blank" rel="noopener">
       <div class="icon-wrap">
         <svg viewBox="0 0 24 24"><path d="M4.5 12.5c0-4 3-7.5 7.5-7.5s7.5 3.5 7.5 7.5"/><path d="M12 5v2M7 8.5l1.5 1.5M17 8.5l-1.5 1.5"/><path d="M8 16c0-2.2 1.8-4 4-4s4 1.8 4 4"/><circle cx="12" cy="18" r="1"/></svg>
       </div>
       <div class="card-body">
-        <div class="card-title">Vasopresores<span class="tag tag-ai">IA</span></div>
-        <div class="card-desc">Shock séptico</div>
+        <div class="card-title">Vasopresores <span class="tag tag-ai">IA</span></div>
+        <div class="card-desc">Uso en el shock séptico</div>
       </div>
     </a>
 
@@ -298,8 +341,8 @@ html, body {
         <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 12h6M12 9v6"/></svg>
       </div>
       <div class="card-body">
-        <div class="card-title">Cálculo dosis</div>
-        <div class="card-desc">Perfusiones UCI</div>
+        <div class="card-title">Cálculo de dosis</div>
+        <div class="card-desc">Perfusiones UCI del Royo</div>
       </div>
     </a>
 
@@ -319,7 +362,7 @@ html, body {
       </div>
       <div class="card-body">
         <div class="card-title">Antibioterapia</div>
-        <div class="card-desc">ATB · antifúngicos</div>
+        <div class="card-desc">ATB · antifúngicos · antivirales</div>
       </div>
     </a>
 
@@ -329,7 +372,7 @@ html, body {
       </div>
       <div class="card-body">
         <div class="card-title">Hemodinámica</div>
-        <div class="card-desc">Monitorización</div>
+        <div class="card-desc">Monitorización y fluidoterapia</div>
       </div>
     </a>
 
@@ -338,22 +381,24 @@ html, body {
         <svg viewBox="0 0 24 24"><path d="M9 5H6a2 2 0 00-2 2v13a2 2 0 002 2h12a2 2 0 002-2V7a2 2 0 00-2-2h-3"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 12h6M9 16h4"/></svg>
       </div>
       <div class="card-body">
-        <div class="card-title">Casos clínicos<span class="tag tag-ai">IA</span></div>
-        <div class="card-desc">Análisis con IA</div>
+        <div class="card-title">Casos clínicos <span class="tag tag-ai">IA</span></div>
+        <div class="card-desc">Análisis con herramientas IA</div>
       </div>
     </a>
+
   </div>
 
   <div class="section-label">Recursos de unidad</div>
 
   <div class="grid-3">
+
     <a href="https://notebooklm.google.com/notebook/7d31a335-4489-4a30-8f29-d44c9220d73f?authuser=1" class="card c-teal" target="_blank" rel="noopener">
       <div class="icon-wrap">
         <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
       </div>
       <div class="card-body">
-        <div class="card-title">Ayuda</div>
-        <div class="card-desc">Día a día UCI</div>
+        <div class="card-title">Necesito ayuda</div>
+        <div class="card-desc">Problemas del día a día</div>
       </div>
     </a>
 
@@ -362,7 +407,7 @@ html, body {
         <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
       </div>
       <div class="card-body">
-        <div class="card-title">Teléfonos</div>
+        <div class="card-title">Guía telefónica</div>
         <div class="card-desc">Directorio HRV</div>
       </div>
     </a>
@@ -372,14 +417,16 @@ html, body {
         <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
       </div>
       <div class="card-body">
-        <div class="card-title">ICCA</div>
-        <div class="card-desc">Registro clínico</div>
+        <div class="card-title">Guía ICCA</div>
+        <div class="card-desc">Registro clínico y configuración</div>
       </div>
     </a>
+
   </div>
 
   <footer class="footer">
-    <p>Notificar errores · UCI · Hospital Universitario Royo Villanova · SALUD</p>
+    <p>En caso de advertir errores o falta de información, notificar</p>
+    <p>UCI · Hospital Universitario Royo Villanova · Servicio Aragonés de Salud</p>
   </footer>
 
 </div>
